@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "angular-shop-ba553": {
+      "hosting": {
+        "angular-shop": [
+          "angular-shop-ba553"
+        ]
+      }
+    }
+  }
+}
