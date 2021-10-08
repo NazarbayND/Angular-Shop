@@ -1,0 +1,33 @@
+<form #f="ngForm" (ngSubmit)="save(f.value)">
+  <div class="mb-3">
+    <label for="title">Title</label>
+    <input ngModel name="title" type="text" class="form-control" id="title" />
+  </div>
+  <div class="mb-3">
+    <label for="price">Price</label>
+    <div class="input-group">
+      <span class="input-group-text">$</span>
+      <input ngModel name="price" type="number" class="form-control" />
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="category">Category</label>
+    <select ngModel name="category" class="form-select" id="category">
+      <option value=""></option>
+      <option *ngFor="let c of categories$ | async" [value]="c.key">
+        {{ c.name }}
+      </option>
+    </select>
+  </div>
+  <div class="mb-3">
+    <label for="imageUrl">Image URL</label>
+    <input
+      ngModel
+      name="imageUrl"
+      type="text"
+      class="form-control"
+      id="imageUrl"
+    />
+  </div>
+  <button class="btn btn-primary">Save</button>
+</form>
