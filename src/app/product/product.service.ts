@@ -4,6 +4,7 @@ import {
   DatabaseSnapshot,
   SnapshotAction,
 } from '@angular/fire/compat/database';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 interface Product {}
 @Injectable({
