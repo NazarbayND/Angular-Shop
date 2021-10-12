@@ -27,6 +27,10 @@ import { ProductFormComponent } from './admin/product-form/product-form.componen
 import { CategoryService } from './category/category.service';
 import { FormsModule } from '@angular/forms';
 import { ProductService } from './product/product.service';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -92,6 +96,10 @@ import { ProductService } from './product/product.service';
       },
     ]),
     NgbModule,
+    NoopAnimationsModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
   ],
   providers: [
     AuthService,
