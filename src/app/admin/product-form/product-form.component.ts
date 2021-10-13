@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
-import { Categories, CategoryService } from 'src/app/category/category.service';
+import { CategoryService } from 'src/app/category/category.service';
+import { Category } from 'src/app/models/category';
 import { ProductService } from 'src/app/product/product.service';
 
 @Component({
@@ -11,7 +12,7 @@ import { ProductService } from 'src/app/product/product.service';
   styleUrls: ['./product-form.component.scss'],
 })
 export class ProductFormComponent implements OnInit {
-  categories$: Observable<Categories[]>;
+  categories$: Observable<Categoryw[]>;
   product: any = {};
   id: string | null;
   constructor(

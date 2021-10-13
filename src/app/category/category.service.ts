@@ -2,10 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-export interface Categories {
-  name: string;
-  key: string;
-}
+import { Category } from '../models/category';
 
 @Injectable({
   providedIn: 'root',
@@ -13,9 +10,9 @@ export interface Categories {
 export class CategoryService {
   constructor(private db: AngularFireDatabase) {}
 
-  getCategories(): Observable<Categories[]> {
+  getCategories(): Observable<Category[]> {
     return this.db
-      .list<Categories>('/categories', (ref) => ref.orderByChild('name'))
+      .list<Category>('/categories', (ref) => ref.orderByChild('name'))
       .snapshotChanges()
       .pipe(
         map((changes: any[]) =>

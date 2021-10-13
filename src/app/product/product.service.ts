@@ -1,12 +1,9 @@
 import { Injectable } from '@angular/core';
-import {
-  AngularFireDatabase,
-  DatabaseSnapshot,
-  SnapshotAction,
-} from '@angular/fire/compat/database';
+import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-interface Product {}
+import { Product } from '../models/product';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -17,7 +14,7 @@ export class ProductService {
     return this.db.list('/products').push(product);
   }
 
-  getAll() {
+  getAll(): Observable<Product[]> {
     return this.db
       .list('/products')
       .snapshotChanges()
