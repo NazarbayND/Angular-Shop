@@ -12,7 +12,7 @@ import { ProductService } from 'src/app/product/product.service';
   styleUrls: ['./product-form.component.scss'],
 })
 export class ProductFormComponent implements OnInit {
-  categories$: Observable<Categoryw[]>;
+  categories$: Observable<Category[]>;
   product: any = {};
   id: string | null;
   constructor(
