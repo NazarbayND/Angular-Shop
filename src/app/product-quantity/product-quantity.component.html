@@ -1,0 +1,15 @@
+<div class="row no-gutters" *ngIf="shoppingCart">
+  <div class="col-2">
+    <div class="d-grid gap-2">
+      <button class="btn btn-secondary" (click)="removeFromCart()">-</button>
+    </div>
+  </div>
+  <div class="col text-center">
+    {{ shoppingCart.getQuantity(product) }} in cart
+  </div>
+  <div class="col-2">
+    <div class="d-grid gap-2">
+      <button class="btn btn-secondary" (click)="addToCart()">+</button>
+    </div>
+  </div>
+</div>
