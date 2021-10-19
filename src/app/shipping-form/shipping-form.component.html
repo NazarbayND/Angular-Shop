@@ -32,7 +32,7 @@
       required
     />
     <div class="invalid-feedback" *ngIf="line1.touched && line1.invalid">
-      Name is required!
+      Address is required!
     </div>
   </div>
   <input
@@ -48,7 +48,7 @@
     required
   />
   <div class="invalid-feedback" *ngIf="line2.touched && line2.invalid">
-    Name is required!
+    Address is required!
   </div>
   <p></p>
   <div class="mb-3">
@@ -66,8 +66,8 @@
       required
     />
     <div class="invalid-feedback" *ngIf="city.touched && city.invalid">
-      Name is required!
+      City is required!
     </div>
   </div>
-  <button class="btn btn-primary">Save</button>
+  <button class="btn btn-primary" [disabled]="!f.valid">Save</button>
 </form>
