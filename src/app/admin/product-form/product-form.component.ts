@@ -27,7 +27,7 @@ export class ProductFormComponent implements OnInit {
       this.productService
         .get(this.id)
         .pipe(take(1))
-        .subscribe((p) => (this.product = p));
+        .subscribe((p: any) => (this.product = p));
   }
 
   ngOnInit(): void {}
