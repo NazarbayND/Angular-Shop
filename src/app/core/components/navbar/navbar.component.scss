@@ -1,0 +1,12 @@
+.container-fluid {
+  display: flex;
+  flex-direction: row;
+}
+.badge {
+  margin-left: 2px;
+}
+.cart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
