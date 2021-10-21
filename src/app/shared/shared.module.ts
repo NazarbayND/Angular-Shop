@@ -3,6 +3,10 @@ import { NgModule } from '@angular/core';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { AdminAuthGuardService } from 'app/admin/services/auth-guard/admin-auth-guard.service';
+import { OrderDetailsComponent } from 'shared/components/order-details/order-details.component';
 
 import { OrdersComponent } from './components/orders/orders.component';
 import { ProductCardComponent } from './components/product-card/product-card.component';
@@ -20,12 +24,26 @@ import { UserService } from './services/user/user.service';
     OrdersComponent,
     ProductCardComponent,
     ProductQuantityComponent,
+    OrderDetailsComponent,
   ],
   imports: [
     CommonModule,
     FormsModule,
+    RouterModule.forChild([
+      {
+        path: 'admin/orders/:id',
+        component: OrderDetailsComponent,
+        canActivate: [AuthGuardService, AdminAuthGuardService],
+      },
+      {
+        path: 'my-orders/:id',
+        component: OrderDetailsComponent,
+        canActivate: [AuthGuardService],
+      },
+    ]),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
+    FontAwesomeModule,
   ],
   providers: [
     AuthService,

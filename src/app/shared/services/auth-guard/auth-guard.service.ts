@@ -6,6 +6,7 @@ import {
   RouterStateSnapshot,
 } from '@angular/router';
 import { map } from 'rxjs/operators';
+
 import { AuthService } from '../auth/auth.service';
 
 @Injectable({

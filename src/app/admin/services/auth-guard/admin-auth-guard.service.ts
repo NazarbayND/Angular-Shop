@@ -4,8 +4,8 @@ import {
   CanActivate,
   RouterStateSnapshot,
 } from '@angular/router';
-import { AuthService } from 'shared/services/auth/auth.service';
 import { map } from 'rxjs/operators';
+import { AuthService } from 'shared/services/auth/auth.service';
 import { UserService } from 'shared/services/user/user.service';
 
 @Injectable({

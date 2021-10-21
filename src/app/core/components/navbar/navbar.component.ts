@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { faLeaf, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { Observable, of } from 'rxjs';
-import { AuthService } from 'shared/services/auth/auth.service';
 import { AppUser } from 'shared/models/app-user';
 import { ShoppingCart } from 'shared/models/shopping-cart';
+import { AuthService } from 'shared/services/auth/auth.service';
 import { ShoppingCartService } from 'shared/services/shopping-service/shopping-cart.service';
-import { faLeaf } from '@fortawesome/free-solid-svg-icons';
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'navbar',
