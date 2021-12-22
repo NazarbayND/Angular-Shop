@@ -1,8 +1,9 @@
-<table class="table">
+<table class="table table-striped align-middle">
   <thead>
     <tr>
       <th>Customer</th>
       <th>Date</th>
+      <th></th>
       <th></th>
     </tr>
   </thead>
@@ -11,6 +12,11 @@
       <td>{{ item.shipping.name }}</td>
       <td>{{ item.datePlaced | date }}</td>
       <td><a [routerLink]="['./', item.key]">View</a></td>
+      <td>
+        <button class="btn btn-danger btn-sm" (click)="delete(item.key)">
+          Delete
+        </button>
+      </td>
     </tr>
   </tbody>
 </table>

@@ -46,4 +46,8 @@ export class OrderService {
   getOrderById(id: string): Observable<Order | null> {
     return this.db.object<Order | null>('/orders/' + id).valueChanges();
   }
+
+  deleteOrder(id: string) {
+    return this.db.object('/orders/' + id).remove();
+  }
 }

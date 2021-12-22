@@ -3,8 +3,17 @@
     <app-product-filter [category]="category"></app-product-filter>
   </div>
   <div class="col">
+    <p>
+      <input
+        #query
+        (keyup)="search(query.value)"
+        type="text"
+        class="form-control"
+        placeholder="Search ..."
+      />
+    </p>
     <div class="row" *ngIf="cart$ | async as cart">
-      <ng-container *ngFor="let p of filteredProducts; let i = index">
+      <ng-container *ngFor="let p of searchedProducts; let i = index">
         <div class="col-sm-6">
           <product-card
             [product]="p"

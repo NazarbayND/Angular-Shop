@@ -15,6 +15,7 @@ import { ShoppingCartService } from 'shared/services/shopping-service/shopping-c
 export class ProductsComponent implements OnInit {
   products: Product[] = [];
   filteredProducts: Product[] = [];
+  searchedProducts: Product[] = [];
   category: string | null = null;
   cart$: Observable<ShoppingCart | null> = of(null);
 
@@ -48,5 +49,14 @@ export class ProductsComponent implements OnInit {
     this.filteredProducts = this.category
       ? this.products.filter((p) => p.category === this.category)
       : this.products;
+    this.search('');
+  }
+
+  search(query: string) {
+    this.searchedProducts = query
+      ? this.filteredProducts.filter((p) =>
+          p.title.toLocaleLowerCase().includes(query.toLocaleLowerCase())
+        )
+      : this.filteredProducts;
   }
 }
