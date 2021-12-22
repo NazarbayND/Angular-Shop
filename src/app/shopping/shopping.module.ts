@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { AuthGuardService } from 'shared/services/auth-guard/auth-guard.service';
 import { SharedModule } from 'shared/shared.module';
 
 import { CheckOutComponent } from './components/check-out/check-out.component';
 import { MyOrdersComponent } from './components/my-orders/my-orders.component';
+import { OrderDetailsComponent } from './components/order-details/order-details.component';
 import { OrderSuccessComponent } from './components/order-success/order-success.component';
 import { ProductFilterComponent } from './components/products/product-filter/product-filter.component';
 import { ProductsComponent } from './components/products/products.component';
 import { ShippingFormComponent } from './components/shipping-form/shipping-form.component';
 import { ShoppingCartSummaryComponent } from './components/shopping-cart-summary/shopping-cart-summary.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
+import { ShoppingRoutingModule } from './shopping-routing.module';
 
 @NgModule({
   declarations: [
@@ -22,29 +22,8 @@ import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.
     ProductFilterComponent,
     ShoppingCartSummaryComponent,
     ShippingFormComponent,
+    OrderDetailsComponent,
   ],
-  imports: [
-    SharedModule,
-    RouterModule.forChild([
-      { path: '', component: ProductsComponent },
-      { path: 'products', component: ProductsComponent },
-      { path: 'shopping-cart', component: ShoppingCartComponent },
-      {
-        path: 'check-out',
-        component: CheckOutComponent,
-        canActivate: [AuthGuardService],
-      },
-      {
-        path: 'my-orders',
-        component: MyOrdersComponent,
-        canActivate: [AuthGuardService],
-      },
-      {
-        path: 'order-success/:id',
-        component: OrderSuccessComponent,
-        canActivate: [AuthGuardService],
-      },
-    ]),
-  ],
+  imports: [SharedModule, ShoppingRoutingModule],
 })
 export class ShoppingModule {}

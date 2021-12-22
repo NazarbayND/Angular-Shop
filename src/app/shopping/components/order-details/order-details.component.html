@@ -1,0 +1,40 @@
+<a routerLink=".."> <fa-icon [icon]="faChevronLeft"></fa-icon> Go Back</a>
+<p></p>
+<div class="card" *ngIf="order">
+  <div class="card-body">
+    <h3 class="card-title">Order Details</h3>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        <p class="card-text" *ngIf="user">Username: {{ user.name }}</p>
+      </li>
+
+      <li class="list-group-item">
+        <h4 class="card-title">Shipping Details</h4>
+        <p class="card-text" *ngIf="user">
+          {{ order.shipping.name }}, {{ order.shipping.line1 }},
+          {{ order.shipping.line2 }}, {{ order.shipping.city }}
+        </p>
+      </li>
+      <li class="list-group-item">
+        <h4 class="card-title">Order Summary</h4>
+        <p class="card-text">
+          You have {{ summary.itemsCount }} items in this order.
+        </p>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item" *ngFor="let item of order.items">
+            {{ item.quantity }} x {{ item.product.title }}
+            <div class="float-end">
+              {{ item.totalPrice | currency: "USD" }}
+            </div>
+          </li>
+          <li class="list-group-item fw-bold">
+            Total
+            <div class="float-end">
+              {{ summary.totalPrice | currency: "USD" }}
+            </div>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>

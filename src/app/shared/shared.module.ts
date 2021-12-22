@@ -5,9 +5,9 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { AdminAuthGuardService } from 'app/admin/services/auth-guard/admin-auth-guard.service';
-import { OrderDetailsComponent } from 'shared/components/order-details/order-details.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+import { NavbarComponent } from './components/navbar/navbar.component';
 import { OrdersComponent } from './components/orders/orders.component';
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { ProductQuantityComponent } from './components/product-quantity/product-quantity.component';
@@ -24,26 +24,16 @@ import { UserService } from './services/user/user.service';
     OrdersComponent,
     ProductCardComponent,
     ProductQuantityComponent,
-    OrderDetailsComponent,
+    NavbarComponent,
   ],
   imports: [
     CommonModule,
+    RouterModule,
     FormsModule,
-    RouterModule.forChild([
-      {
-        path: 'admin/orders/:id',
-        component: OrderDetailsComponent,
-        canActivate: [AuthGuardService, AdminAuthGuardService],
-      },
-      {
-        path: 'my-orders/:id',
-        component: OrderDetailsComponent,
-        canActivate: [AuthGuardService],
-      },
-    ]),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
     FontAwesomeModule,
+    NgbModule,
   ],
   providers: [
     AuthService,
@@ -56,12 +46,15 @@ import { UserService } from './services/user/user.service';
   ],
   exports: [
     OrdersComponent,
+    NgbModule,
+    FontAwesomeModule,
     ProductCardComponent,
     ProductQuantityComponent,
     CommonModule,
     FormsModule,
     AngularFireAuthModule,
     AngularFireDatabaseModule,
+    NavbarComponent,
   ],
 })
 export class SharedModule {}
