@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { faLeaf, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { Observable, of } from 'rxjs';
 import { AppUser } from 'shared/models/app-user';
@@ -20,7 +21,8 @@ export class NavbarComponent implements OnInit {
 
   constructor(
     public auth: AuthService,
-    private cartService: ShoppingCartService
+    private cartService: ShoppingCartService,
+    private router: Router
   ) {}
   async ngOnInit() {
     this.auth.appUser$.subscribe((user) => (this.appUser = user));
@@ -30,5 +32,6 @@ export class NavbarComponent implements OnInit {
 
   logout() {
     this.auth.logout();
+    this.router.navigate(['']);
   }
 }
