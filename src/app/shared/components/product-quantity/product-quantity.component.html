@@ -1,15 +1,15 @@
-<div class="row no-gutters" *ngIf="shoppingCart">
-  <div class="col-2">
+<div class="flex flex-wrap no-gutters" *ngIf="shoppingCart">
+  <div class="w-1/5">
     <div class="d-grid gap-2">
-      <button class="btn btn-secondary" (click)="removeFromCart()">-</button>
+      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" (click)="removeFromCart()">-</button>
     </div>
   </div>
-  <div class="col text-center">
+  <div class="flex-grow text-center">
     {{ shoppingCart.getQuantity(product) }} in cart
   </div>
-  <div class="col-2">
+  <div class="w-1/5">
     <div class="d-grid gap-2">
-      <button class="btn btn-secondary" (click)="addToCart()">+</button>
+      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" (click)="addToCart()">+</button>
     </div>
   </div>
 </div>
