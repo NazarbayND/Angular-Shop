@@ -3,15 +3,13 @@
     <app-product-filter [category]="category"></app-product-filter>
   </div>
   <div class="col">
-    <div class="row" *ngIf="cart$ | async as cart">
+    <div class="grid grid-cols-2 gap-4" *ngIf="cart$ | async as cart">
       <ng-container *ngFor="let p of filteredProducts; let i = index">
-        <div class="col-sm-6">
-          <product-card
-            [product]="p"
-            [show-actions]="true"
-            [shopping-cart]="cart"
-          ></product-card>
-        </div>
+        <product-card
+          [product]="p"
+          [show-actions]="true"
+          [shopping-cart]="cart"
+        ></product-card>
       </ng-container>
     </div>
   </div>
