@@ -14,6 +14,7 @@ import { ProductQuantityComponent } from './components/product-quantity/product-
 import { AuthGuardService } from './services/auth-guard/auth-guard.service';
 import { AuthService } from './services/auth/auth.service';
 import { CategoryService } from './services/category/category.service';
+import { LoaderService } from '../loader/services/loader/loader.service';
 import { OrderService } from './services/order/order.service';
 import { ProductService } from './services/product/product.service';
 import { ShoppingCartService } from './services/shopping-service/shopping-cart.service';

@@ -4,6 +4,7 @@ import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { Product } from 'shared/models/product';
 import { ShoppingCart } from 'shared/models/shopping-cart';
+import { LoaderService } from 'app/loader/services/loader/loader.service';
 import { ProductService } from 'shared/services/product/product.service';
 import { ShoppingCartService } from 'shared/services/shopping-service/shopping-cart.service';
 
@@ -22,15 +23,20 @@ export class ProductsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private productService: ProductService,
-    private cartService: ShoppingCartService
+    private cartService: ShoppingCartService,
+    private loader: LoaderService
   ) {}
 
   async ngOnInit() {
+    this.loader.setLoading(true);
     this.cart$ = await this.cartService.getCart();
-    this.populateProducts();
+    await this.populateProducts();
+    // setTimeout(() => {
+    //   this.loader.setLoading(false);
+    // }, 2000);
   }
 
-  populateProducts() {
+  async populateProducts() {
     this.productService
       .getAll()
       .pipe(
@@ -58,5 +64,6 @@ export class ProductsComponent implements OnInit {
           p.title.toLocaleLowerCase().includes(query.toLocaleLowerCase())
         )
       : this.filteredProducts;
+    this.loader.setLoading(false);
   }
 }

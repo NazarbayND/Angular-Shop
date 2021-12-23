@@ -24,6 +24,7 @@ export class ProductService {
         )
       );
   }
+
   get(id: string) {
     return this.db.object('/products/' + id).valueChanges();
   }
