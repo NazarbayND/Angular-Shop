@@ -17,7 +17,6 @@ import { AppComponent } from './app.component';
     AppRoutingModule,
     NoopAnimationsModule,
   ],
-
   bootstrap: [AppComponent],
 })
 export class AppModule {}
