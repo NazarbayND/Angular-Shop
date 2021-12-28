@@ -1,0 +1,81 @@
+<a routerLink=".."> <fa-icon [icon]="faChevronLeft"></fa-icon> Go Back</a>
+<p></p>
+<div class="card mb-3">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img
+        [src]="product?.imageUrl"
+        alt="Product image"
+        class="img-fluid rounded-start"
+      />
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h1 class="card-title">{{ product?.title }}</h1>
+        <p class="card-text">{{ product?.price | currency }}</p>
+        <p class="card-text">Description: {{ product?.description }}</p>
+        <div class="pt-4" *ngIf="cart$ | async as shoppingCart">
+          <div
+            class="d-grid gap-2"
+            *ngIf="shoppingCart.getQuantity(product) === 0; else updateQuantity"
+          >
+            <button
+              class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded"
+              (click)="addToCart()"
+            >
+              Add to Cart
+            </button>
+          </div>
+          <ng-template #updateQuantity>
+            <product-quantity
+              [product]="product"
+              [shopping-cart]="shoppingCart"
+            ></product-quantity>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p class="font-bold text-lg">Comments</p>
+<div class="row" *ngIf="comments$ | async as coms">
+  <div class="col">
+    <ng-container *ngFor="let item of coms">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title">{{ item.text }}</h2>
+          <div class="col">
+            <p class="card-text">{{ item.username }}, {{ item.date | date }}</p>
+          </div>
+        </div>
+      </div>
+      <p></p>
+    </ng-container>
+  </div>
+</div>
+
+<p></p>
+
+<p *ngIf="!user">Only registered users can add comments</p>
+<textarea
+  class="form-control"
+  id="exampleFormControlTextarea1"
+  rows="3"
+  name="text"
+  [(ngModel)]="text"
+  required
+  [disabled]="!user"
+></textarea>
+<p></p>
+<div class="col-12">
+  <button
+    class="btn btn-primary"
+    type="submit"
+    [disabled]="!user || text.length < 1"
+    (click)="addComment()"
+  >
+    Add Comment
+  </button>
+</div>
+<div class="mb-8"></div>

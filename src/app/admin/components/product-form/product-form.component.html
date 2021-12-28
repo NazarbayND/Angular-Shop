@@ -37,6 +37,7 @@
           </div>
         </div>
       </div>
+
       <div class="mb-3">
         <label for="category">Category</label>
         <select
@@ -79,6 +80,17 @@
           *ngIf="imageUrl.touched && imageUrl.invalid"
         >
           Image is required!
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="price">Description</label>
+        <div class="input-group">
+          <textarea
+            #price="ngModel"
+            [(ngModel)]="product.description"
+            name="description"
+            class="form-control"
+          ></textarea>
         </div>
       </div>
       <button class="btn btn-primary">Save</button>

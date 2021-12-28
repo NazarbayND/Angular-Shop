@@ -1,9 +1,22 @@
-<div class="relative flex flex-col min-w-0 rounded break-words border bg-white border-1 border-grey-light" *ngIf="product && product.title">
+<div
+  class="
+    relative
+    flex flex-col
+    min-w-0
+    rounded
+    break-words
+    border
+    bg-white
+    border-1 border-grey-light
+  "
+  *ngIf="product && product.title"
+>
   <img
     *ngIf="product.imageUrl"
     [src]="product.imageUrl"
-    class="card-img-top"
+    class="card-img-top cursor-pointer"
     alt="{{ product.title }}"
+    [routerLink]="['./', product.key]"
   />
   <div class="flex-auto p-6">
     <h2 class="mb-3">{{ product.title }}</h2>
@@ -11,12 +24,20 @@
       {{ product.price | currency: "USD" }}
     </p>
   </div>
-  <div class="py-3 px-6 bg-grey-100 border-t-1 border-grey-light gap-2" *ngIf="showActions && shoppingCart">
+  <div
+    class="py-3 px-6 bg-grey-100 border-t-1 border-grey-light gap-2"
+    *ngIf="showActions && shoppingCart"
+  >
     <div
       class="d-grid gap-2"
       *ngIf="shoppingCart.getQuantity(product) === 0; else updateQuantity"
     >
-      <button class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded" (click)="addToCart()">Add to Cart</button>
+      <button
+        class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded"
+        (click)="addToCart()"
+      >
+        Add to Cart
+      </button>
     </div>
     <ng-template #updateQuantity>
       <product-quantity

@@ -19,6 +19,7 @@ import { OrderService } from './services/order/order.service';
 import { ProductService } from './services/product/product.service';
 import { ShoppingCartService } from './services/shopping-service/shopping-cart.service';
 import { UserService } from './services/user/user.service';
+import { CommentService } from './services/comment/comment.service';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { UserService } from './services/user/user.service';
     ProductService,
     ShoppingCartService,
     OrderService,
+    CommentService,
   ],
   exports: [
     OrdersComponent,
