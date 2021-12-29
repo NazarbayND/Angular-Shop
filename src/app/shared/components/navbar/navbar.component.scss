@@ -10,3 +10,10 @@
   align-items: center;
   justify-content: center;
 }
+.my-drop {
+  transform-origin: top;
+  position: absolute;
+  z-index: 1;
+  background-color: white;
+  width: max-content;
+}

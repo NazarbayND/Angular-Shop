@@ -5,7 +5,6 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { OrdersComponent } from './components/orders/orders.component';
@@ -14,12 +13,11 @@ import { ProductQuantityComponent } from './components/product-quantity/product-
 import { AuthGuardService } from './services/auth-guard/auth-guard.service';
 import { AuthService } from './services/auth/auth.service';
 import { CategoryService } from './services/category/category.service';
-import { LoaderService } from '../loader/services/loader/loader.service';
+import { CommentService } from './services/comment/comment.service';
 import { OrderService } from './services/order/order.service';
 import { ProductService } from './services/product/product.service';
 import { ShoppingCartService } from './services/shopping-service/shopping-cart.service';
 import { UserService } from './services/user/user.service';
-import { CommentService } from './services/comment/comment.service';
 
 @NgModule({
   declarations: [
@@ -30,12 +28,12 @@ import { CommentService } from './services/comment/comment.service';
   ],
   imports: [
     CommonModule,
+
     RouterModule,
     FormsModule,
     AngularFireAuthModule,
     AngularFireDatabaseModule,
     FontAwesomeModule,
-    NgbModule,
   ],
   providers: [
     AuthService,
@@ -49,7 +47,6 @@ import { CommentService } from './services/comment/comment.service';
   ],
   exports: [
     OrdersComponent,
-    NgbModule,
     FontAwesomeModule,
     ProductCardComponent,
     ProductQuantityComponent,

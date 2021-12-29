@@ -1,3 +1,10 @@
+import {
+  animate,
+  state,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { faLeaf, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
@@ -11,6 +18,29 @@ import { ShoppingCartService } from 'shared/services/shopping-service/shopping-c
   selector: 'navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
+  animations: [
+    trigger('openClose', [
+      state(
+        'open',
+        style({
+          pointerEvents: 'all',
+          transform: 'translateY(0)',
+          opacity: '1',
+        })
+      ),
+      state(
+        'closed',
+        style({
+          pointerEvents: 'none',
+          transform: 'translateY(-10%)',
+          opacity: '0',
+        })
+      ),
+      transition('open => closed', [animate('1s ease-out')]),
+      transition('closed => open', [animate('1s ease-in')]),
+      transition('* => open', [animate('1s ease-out')]),
+    ]),
+  ],
 })
 export class NavbarComponent implements OnInit {
   faLeaf = faLeaf;
@@ -18,6 +48,7 @@ export class NavbarComponent implements OnInit {
 
   appUser: AppUser | null = null;
   cart$: Observable<ShoppingCart | null> = of(null);
+  isOpen = false;
 
   constructor(
     public auth: AuthService,
@@ -30,6 +61,9 @@ export class NavbarComponent implements OnInit {
     this.cart$ = await this.cartService.getCart();
   }
 
+  toggle() {
+    this.isOpen = !this.isOpen;
+  }
   logout() {
     this.auth.logout();
     this.router.navigate(['']);
