@@ -36,9 +36,9 @@ import { ShoppingCartService } from 'shared/services/shopping-service/shopping-c
           opacity: '0',
         })
       ),
-      transition('open => closed', [animate('1s ease-out')]),
-      transition('closed => open', [animate('1s ease-in')]),
-      transition('* => open', [animate('1s ease-out')]),
+      transition('open => closed', [animate('0.5s ease-out')]),
+      transition('closed => open', [animate('0.5s ease-in')]),
+      transition('* => open', [animate('0.5s ease-out')]),
     ]),
   ],
 })
